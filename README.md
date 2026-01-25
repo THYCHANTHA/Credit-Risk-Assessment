@@ -1,47 +1,34 @@
-# Dynamic Credit Risk Assessment AI
+# Credit Risk Assessment System
 
-A professional, full-stack AI application for assessing loan credit risk using multilingual zero-shot classification (Khmer / English).
+This is a project I developed to help financial institutions assess loan risks using AI. It is a full-stack web application built with Streamlit and uses Deep Learning to analyze text.
 
-Built with **Streamlit**, **Hugging Face Transformers**, and **Plotly**.
+## What this project does
 
----
+This system allows loan officers to enter a description of a loan application (in **Khmer** or **English**) and automatically determines if the applicant is **Low Risk**, **Medium Risk**, or **High Risk**.
 
-## Features
+It uses a Zero-Shot Classification model (`xlm-roberta-large-xnli`) which works great for multiple languages.
 
-*   **Multilingual Analysis**: Native support for Khmer and English input.
-*   **Zero-Shot Classification**: Uses `joeddav/xlm-roberta-large-xnli` to classify risk without specific training data.
-*   **Khmer Keyword Enhancement**: Automatically maps financial Khmer terms to English concepts to improve AI context understanding.
-*   **Batch Processing**: Upload CSV files for bulk risk assessment with visualization.
-*   **Real-time Risk Simulator**: Adjust loan parameters (amount, urgency) to see risk scoring logic.
-*   **Feedback Loop**: SQLite database integration to log predictions and user feedback ("Agree"/"Disagree") for future model fine-tuning.
-*   **Premium UI**: Glassmorphism design with responsiveness and dark mode.
+## Main Features
 
-## Tech Stack
+*   **Works with Khmer & English**: I implemented a special function to detect Khmer text and map keywords (like "bamonul" -> "debt") so the AI understands the context better.
+*   **AI Analysis**: It predicts the risk level without needing a huge training dataset.
+*   **Batch Processing**: You can upload a CSV file containing diverse customer data, and the system will analyze all of them at once.
+*   **Visualizations**: It shows the results in clear charts and progress bars.
+*   **Risk Simulator**: I added a slider tool to simulate how different factors (like loan amount or urgency) affect the risk score.
+*   **Database Logging**: All predictions and user feedback (Agree/Disagree) are saved to a local SQLite database so we can improve the model later.
 
-*   **Frontend/Backend**: Streamlit (Python)
-*   **AI Model**: XLM-RoBERTa (Zero-Shot Classification)
-*   **Database**: SQLite (built-in logging)
-*   **Visualization**: Plotly Express
-*   **Text Processing**: Regex & Custom Mapping
+## How I built it
 
-## Project Structure
+I used the following technologies:
+*   **Python**: The core language.
+*   **Streamlit**: To build the user interface.
+*   **Hugging Face**: For the pre-trained AI model.
+*   **Plotly**: To create the interactive charts.
+*   **SQLite**: For data storage.
 
-```
-Credit-Risk-Assessment/
-├── app.py                 # Main application entry point
-├── requirements.txt       # Python dependencies
-├── src/                   # Source code modules
-│   ├── classifier.py      # AI Model logic & caching
-│   ├── database.py        # SQLite database handling
-│   ├── ui.py              # Custom CSS & UI components
-│   └── utils.py           # Text processing & Khmer mapping
-├── data/                  # Database storage (auto-generated)
-└── README.md              # Documentation
-```
+## How to run the project
 
-## Installation & Setup
-
-1.  **Clone the repository**:
+1.  **Clone this repository**:
     ```bash
     git clone https://github.com/THYCHANTHA/Credit-Risk-Assessment.git
     cd Credit-Risk-Assessment
@@ -52,17 +39,16 @@ Credit-Risk-Assessment/
     pip install -r requirements.txt
     ```
 
-3.  **Run the application**:
+3.  **Run the app**:
     ```bash
     streamlit run app.py
     ```
 
-## Usage
+## File Structure
 
-1.  **Single Application**: Type a loan request in the text box (e.g., "I need money urgently for debt"). The AI will highlight keywords and estimate risk.
-2.  **Batch Processing**: Go to the "Batch Processing" tab, upload a CSV, and select the text column to analyze multiple rows at once.
-3.  **Global Logs**: View the history of all predictions and user feedback in the "Global Logs" tab.
+*   `app.py`: The main file to start the application.
+*   `src/`: Contains the logic for the Classifier, Database, and UI styles.
+*   `requirements.txt`: List of libraries needed.
 
-## License
-
-This project is open-source.
+---
+This project was built for educational and practical purposes to demonstrate how AI can be applied in the Banking sector.
