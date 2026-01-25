@@ -9,7 +9,6 @@ from src import ui, utils, classifier, database
 # --- Page Config ---
 st.set_page_config(
     page_title="Credit Risk AI Analysis",
-    page_icon="💳",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -23,16 +22,16 @@ with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/2666/2666505.png", width=60)
     st.markdown("### Configuration")
     
-    st.markdown("#### 📂 Data Import")
+    st.markdown("#### Data Import")
     uploaded_file = st.file_uploader("Upload Batch CSV", type=["csv"])
     
-    st.markdown("#### 🏷️ Candidate Labels")
+    st.markdown("#### Candidate Labels")
     default_labels = "low risk, medium risk, high risk"
     labels_input = st.text_area("Edit Labels (comma separated)", default_labels, height=100)
     candidate_labels = [label.strip() for label in labels_input.split(',')]
     
     st.markdown("---")
-    st.markdown("#### 🎚️ Risk Simulator")
+    st.markdown("#### Risk Simulator")
     sim_loan_amount = st.slider("Loan Amount ($)", 500, 50000, 5000)
     sim_debts = st.slider("Overdue Debts", 0, 10, 0)
     sim_urgency = st.slider("Urgency Level", 1, 10, 5)
@@ -58,7 +57,7 @@ if not model:
     st.stop()
 
 # Tabs
-tab1, tab2, tab3 = st.tabs(["📝 Single Application", "📊 Batch Processing", "📜 Global Logs"])
+tab1, tab2, tab3 = st.tabs(["Single Application", "Batch Processing", "Global Logs"])
 
 # === TAB 1: Single Application ===
 with tab1:
@@ -99,7 +98,7 @@ with tab1:
             st.markdown("**Semantic Extraction:**")
             st.markdown(f"<div style='background:rgba(255,255,255,0.05); padding:15px; border-radius:10px; margin-bottom:15px; line-height:1.6;'>{highlighted_html}</div>", unsafe_allow_html=True)
             if is_khmer:
-                st.caption("ℹ️ Khmer tokens mapped to English financial concepts for enhanced precision.")
+                st.caption("Khmer tokens mapped to English financial concepts for enhanced precision.")
             
             st.divider()
             
@@ -124,17 +123,17 @@ with tab1:
             # Feedback
             st.markdown("**Validation:**")
             fb_c1, fb_c2 = st.columns(2)
-            if fb_c1.button("✅ Confirm"):
+            if fb_c1.button("Confirm"):
                 database.log_prediction(st.session_state['last_input'], top_label, top_score, "agree")
-                st.toast("Feedback recorded successfully!", icon="💾")
-            if fb_c2.button("❌ Reject"):
+                st.toast("Feedback recorded successfully!")
+            if fb_c2.button("Reject"):
                 database.log_prediction(st.session_state['last_input'], top_label, top_score, "disagree")
-                st.toast("Feedback recorded logged for review.", icon="⚠️")
+                st.toast("Feedback recorded logged for review.")
                 
             st.markdown('</div>', unsafe_allow_html=True)
         else:
             # Placeholder
-            st.info("👈 Enter application details to generate a report.")
+            st.info("Enter application details to generate a report.")
 
 # === TAB 2: Batch Processing ===
 with tab2:
@@ -194,7 +193,7 @@ with tab2:
             
             csv = res_df.to_csv(index=False).encode('utf-8')
             st.download_button(
-                "📥 Download Report",
+                "Download Report",
                 csv,
                 "risk_assessment_batch_results.csv",
                 "text/csv",
@@ -208,7 +207,7 @@ with tab2:
 
 # === TAB 3: Global Logs ===
 with tab3:
-    st.markdown("### 📜 System Logs & Feedback History")
+    st.markdown("### System Logs & Feedback History")
     
     if st.button("Refresh Logs"):
         # Just reruns the script to fetch new data

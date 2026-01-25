@@ -1,12 +1,12 @@
-# 💳 Dynamic Credit Risk Assessment AI
+# Dynamic Credit Risk Assessment AI
 
-A professional, full-stack AI application for assessing loan credit risk using multilingual zero-shot classification (Khmer 🇰🇭 / English 🇺🇸).
+A professional, full-stack AI application for assessing loan credit risk using multilingual zero-shot classification (Khmer / English).
 
 Built with **Streamlit**, **Hugging Face Transformers**, and **Plotly**.
 
 ---
 
-## 🚀 Features
+## Features
 
 *   **Multilingual Analysis**: Native support for Khmer and English input.
 *   **Zero-Shot Classification**: Uses `joeddav/xlm-roberta-large-xnli` to classify risk without specific training data.
@@ -16,7 +16,7 @@ Built with **Streamlit**, **Hugging Face Transformers**, and **Plotly**.
 *   **Feedback Loop**: SQLite database integration to log predictions and user feedback ("Agree"/"Disagree") for future model fine-tuning.
 *   **Premium UI**: Glassmorphism design with responsiveness and dark mode.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 *   **Frontend/Backend**: Streamlit (Python)
 *   **AI Model**: XLM-RoBERTa (Zero-Shot Classification)
@@ -24,7 +24,7 @@ Built with **Streamlit**, **Hugging Face Transformers**, and **Plotly**.
 *   **Visualization**: Plotly Express
 *   **Text Processing**: Regex & Custom Mapping
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 Credit-Risk-Assessment/
@@ -39,7 +39,7 @@ Credit-Risk-Assessment/
 └── README.md              # Documentation
 ```
 
-## ⚡ Installation & Setup
+## Installation & Setup
 
 1.  **Clone the repository**:
     ```bash
@@ -57,12 +57,12 @@ Credit-Risk-Assessment/
     streamlit run app.py
     ```
 
-## 🧪 Usage
+## Usage
 
 1.  **Single Application**: Type a loan request in the text box (e.g., "I need money urgently for debt"). The AI will highlight keywords and estimate risk.
 2.  **Batch Processing**: Go to the "Batch Processing" tab, upload a CSV, and select the text column to analyze multiple rows at once.
 3.  **Global Logs**: View the history of all predictions and user feedback in the "Global Logs" tab.
 
-## 📝 License
+## License
 
 This project is open-source.
